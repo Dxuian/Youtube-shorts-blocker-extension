@@ -3,7 +3,8 @@
 document.getElementById("actualtoggle").click();
 var keep = 0
 document.getElementById("actualtoggle").addEventListener("click", check);
-function check() {
+function check() 
+{
     if (keep == 0) 
     {
         var idtest = document.getElementById("dismissible");
@@ -13,6 +14,7 @@ function check() {
             var x = document.getElementById("switcher").className;
             document.getElementById("switcher").className = document.getElementById("switcheron").className;
             document.getElementById("switcheron").className = x;
+            k =1 ; 
             return;
         }
         var classtest = document.getElementsByClassName("style-scope ytd-rich-shelf-renderer");
@@ -22,6 +24,7 @@ function check() {
             var x = document.getElementById("switcher").className;
             document.getElementById("switcher").className = document.getElementById("switcheron").className;
             document.getElementById("switcheron").className = x;
+            k=1 ; 
             return;
         }
         var custom = document.getElementsByTagName("ytd-rich-shelf-renderer")
@@ -31,6 +34,7 @@ function check() {
             var x = document.getElementById("switcher").className;
             document.getElementById("switcher").className = document.getElementById("switcheron").className;
             document.getElementById("switcheron").className = x;
+            k=1 ; 
             return;
         }
     }
