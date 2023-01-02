@@ -1,0 +1,24 @@
+{
+  "name": "Youtube shorts remover",
+  "description": "Removes youtube shorts ",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "disable.html",
+    "default_icon": "images/favicon.png"
+  },
+  "author":"Unnat Bharol",
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/script.js"
+      ],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://*/*"
+        
+      ]
+    }
+  ]
+}
