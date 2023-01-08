@@ -34,4 +34,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 
+browser.tabs.onUpdated.addListener( ()  => {browser.tabs.sendMessage("reloaded")}   );
+
+
 
