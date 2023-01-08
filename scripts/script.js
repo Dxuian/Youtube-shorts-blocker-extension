@@ -1,80 +1,102 @@
-
-// alert(window.innerHeight);
-document.getElementById("actualtoggle").click();
-var keep = 0,state=0,buf; 
-document.getElementById("actualtoggle").addEventListener("click", check);
-
-function check() 
-{
-    if (keep == 0) 
-    {
-        var idtest = document.getElementById("dismissible");
-        if (idtest) 
-        {
-            buf = document.getElementById("dismissible").innerHTML ; 
-            document.getElementById("dismissible").innerHTML = "" ; 
-            var x = document.getElementById("switcher").className;
-            document.getElementById("switcher").className = document.getElementById("switcheron").className;
-            document.getElementById("switcheron").className = x;
-            k =1 ; 
-            state=1;
-            return;
-        }
-        var classtest = document.getElementsByClassName("style-scope ytd-rich-shelf-renderer");
-        if (classtest.length > 0) 
-        {
-            buf  = document.getElementsByClassName("style-scope ytd-rich-shelf-renderer")[0].innerHTML
-            document.getElementsByClassName("style-scope ytd-rich-shelf-renderer")[0].innerHTML = "";
-            var x = document.getElementById("switcher").className;
-            document.getElementById("switcher").className = document.getElementById("switcheron").className;
-            document.getElementById("switcheron").className = x;
-            k=1 ; 
-            state=2;
-            return;
-        }
-        var custom = document.getElementsByTagName("ytd-rich-shelf-renderer")
-        if (custom.length > 0) 
-        {
-            buf  = document.getElementsByTagName("ytd-rich-shelf-renderer")[0].innerHTML;
-            document.getElementsByTagName("ytd-rich-shelf-renderer")[0].innerHTML = "";
-            var x = document.getElementById("switcher").className;
-            document.getElementById("switcher").className = document.getElementById("switcheron").className;
-            document.getElementById("switcheron").className = x;
-            k=1 ;
-            state=3; 
-            return;
-        }
-        else{
-            // document.getElementById("actualtoggle").click();
-            // return;
-            document.getElementById("actualtoggle").removeEventListener("click",check);
-            setTimeout(() => {document.getElementById("actualtoggle").click();
-            document.getElementById("actualtoggle").addEventListener("click", check);
-            document.getElementById("switcher").innerHTML="<h1>Shorts on</h1>" ;             
-        } , 450) ; 
-           
-            document.getElementById("switcher").innerHTML="<h1>Error , try reloading</h1>"            
-            
-            return ; 
-        }
+//1 is button on shorts off 
+//0 is button off shorts on 
+if (typeof browser == "undefined") {
+    browser = chrome;
+}
+var k2;
+// document.addEventListener("DOMContentLoaded", check);
+async function check(passer){
+    if (typeof browser == "undefined") {
+        browser = chrome;
     }
-    else
-    {
-        switch (state) {
-            case 1:
-                document.getElementsByTagName("ytd-rich-shelf-renderer")[0].innerHTML = buf ;  
-                break;
-            case 2:
-                document.getElementsByClassName("style-scope ytd-rich-shelf-renderer")[0].innerHTML  = buf ;
-                break ; 
-            case 3:
-                document.getElementById("dismissible").innerHTML = buf ;      
-                break ; 
-            default:
-                break;
-        }
-       
-
+    var k1 = browser.runtime.sendMessage('check');
+    k2 = await k1;
+    k2 = Number(k2);
+    console.log(k2);
+    if (k2===1 && passer==undefined) {
+        document.getElementById("turner").checked = "true";
         
     }
-}   
+    else if (passer==undefined) {
+        document.getElementById("turner").removeAttribute("checked");
+    }
+    return k2; 
+}
+check() ; 
+
+document.getElementById("actualtoggle").addEventListener("click", changeto);
+async function changeto() {
+    if (typeof browser == "undefined") {
+        browser = chrome;
+    }
+    passer= "cram" ; 
+    k2  = await check(passer) ; 
+    if (k2 == 1) {
+        sender = 0;
+    }
+    else {
+        sender = 1;
+    }
+    var findtab = await browser.tabs.query({ active: true, currentWindow: true, url: "https://www.youtube.com/*" })
+    if (findtab.length != 0) {
+        var after = await browser.tabs.sendMessage(findtab[0].id, "changetype");
+        var kay = after;
+        if (kay == "made changes") {
+            var ca = await browser.runtime.sendMessage("change");
+            console.log(ca);
+        }
+        else {
+
+        }
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function curr()
+// {
+//     var findtab = await browser.tabs.query({active:true,currentWindow:true,url:"https://www.youtube.com/*"}) ;
+//     if(findtab.length!=0)
+//     {
+//         var after = await browser.tabs.sendMessage(findtab[0].id,"orginal") ;
+//         var kay =  after ;
+//     }
+// }

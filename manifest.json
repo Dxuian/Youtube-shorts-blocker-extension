@@ -7,18 +7,33 @@
     "default_popup": "disable.html",
     "default_icon": "images/favicon.png"
   },
-  "author":"Unnat Bharol",
-  "permissions": ["activeTab", "scripting"],
+  "author": "Unnat Bharol",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "debugger",
+    "contentSettings",
+    "favicon",
+    "management",
+    "nativeMessaging",
+    "pageCapture",
+    "tabCapture",
+    "storage"
+  ],
   "content_scripts": [
     {
       "js": [
-        "scripts/script.js"
+        "scripts/content.js"
       ],
       "matches": [
+        "https://youtube.com/",
         "https://www.youtube.com/*",
-        "https://*/*"
-        
+        "http://youtube.com/*"
       ]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  }
 }
