@@ -37,17 +37,12 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
             sendResponse("made changes");
         }
-        else if(message=="reloaded")
-        {
-            pol() ; 
-        }
 
     })();
     return true;
 }) 
-window.addEventListener("load",pol)
- async function pol () 
- {
+window.addEventListener("DOMContentLoaded",pol)
+var pol = (async ()  =>{
         var y = browser.storage.local.get("state");
         var x = await y;
         x = x.state;
@@ -75,4 +70,4 @@ window.addEventListener("load",pol)
             }
 
         }
-}
+})
