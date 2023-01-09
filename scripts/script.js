@@ -33,9 +33,16 @@ async function changeto() {
     k2  = await check(passer) ; 
     if (k2 == 1) {
         sender = 0;
+
+        var x = document.getElementById("switcher").className;
+        document.getElementById("switcher").className = document.getElementById("switcheron").className;
+        document.getElementById("switcheron").className = x;
     }
     else {
-        sender = 1;
+        sender = 1; 
+        var x = document.getElementById("switcheron").className;
+        document.getElementById("switcheron").className = document.getElementById("switcher").className;
+        document.getElementById("switcher").className = x;
     }
     var findtab = await browser.tabs.query({ active: true, currentWindow: true, url: "https://www.youtube.com/*" })
     if (findtab.length != 0) {

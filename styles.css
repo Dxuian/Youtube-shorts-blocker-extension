@@ -32,14 +32,19 @@
   width:500px;
 } */
 .bg-m {
-  background: red;
+  background: rgb(149, 38, 38);
   display: grid;
   grid-template-columns: auto auto auto;
 }
+/* .bgmine
+{
+  background-color: rgb(177, 175, 19);
+} */
 
 
 .actualhead {
   text-align: right;
+  color:red;
   -webkit-grid-column-start: 2;
   grid-column-start: 2;
   -webkit-grid-column-end: 4;
@@ -52,7 +57,7 @@
 }
 
 .actualhead::first-letter {
-  color: rgb(97, 3, 3);
+  color: red
 
 }
 
@@ -143,6 +148,7 @@ input:checked+.slider:before {
   padding-bottom: 30px;
   padding-top: 15px;
   margin-top: auto;
+  color:hsl(49, 80%, 39%);
  
 }
 
@@ -152,6 +158,7 @@ input:checked+.slider:before {
   padding-bottom: 30px;
   padding-top: 15px;
   margin-top: auto;
+  color:hsl(49, 80%, 39%);
   
  
 }
