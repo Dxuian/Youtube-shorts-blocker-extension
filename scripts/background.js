@@ -5,7 +5,6 @@ browser.runtime.onInstalled.addListener(async () => {
     keep = 0;
     var stat1 = { "state": 0 };
     await browser.storage.local.set(stat1).then(() => { console.log("f1") }, () => { console.log("f2") });
-
 }
 )
 var user = "OKKK";
@@ -23,6 +22,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             var x = browser.storage.local.get("state");
             var y = await x;
             y = y.state;
+            
             var stat2;
             if(y==1){ var stat2 = { "state": 0 };}
             else{ var stat2 = { "state": 1 };}
@@ -34,7 +34,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 
-browser.tabs.onUpdated.addListener( ()  => {browser.tabs.sendMessage("reloaded")}   );
 
 
 
