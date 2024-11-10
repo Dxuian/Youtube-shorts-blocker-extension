@@ -1,7 +1,7 @@
 {
   "name": "Youtube shorts remover",
   "description": "Removes youtube shorts ",
-  "version": "27.0",
+  "version": "37.0",
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {
@@ -27,7 +27,8 @@
     "nativeMessaging",
     "pageCapture",
     "tabCapture",
-    "storage"
+    "storage",
+    "webRequestBlocking"
   ],
   "host_permissions": [
     "<all_urls>"

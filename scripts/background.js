@@ -12,7 +12,7 @@ var target = "https://www.youtube.com/*";
 chrome.webRequest.onCompleted.addListener(rechange, { urls: [target] });
 browser.tabs.onUpdated.addListener(rechange) ; 
 async function rechange() {
-    // await setInterval(()=>{}, 62);
+    await setInterval(()=>{}, 62);
     var findtab = await browser.tabs.query({ active: true, currentWindow: true, url: "https://www.youtube.com/*" })
     if (findtab.length != 0) {
         browser.tabs.sendMessage(findtab[0].id, "pager");
@@ -22,9 +22,20 @@ async function rechange() {
 
 
 
+// const blockedUrls = "https://www.youtube.com/watch?v=JHJfWdUNUQ8"
+// const redirectUrl = "https://www.wikipedia.org"; // URL to redirect to
 
+// // Define the function separately
+// function blockRequest(details) {
+//   return { redirectUrl: redirectUrl };
+// }
 
-
+// // Add the listener and pass the function
+// browser.webRequest.onBeforeRequest.addListener(
+//   blockRequest,
+//   { urls: blockedUrls },
+//   ["blocking"]
+// );
 
 
 
