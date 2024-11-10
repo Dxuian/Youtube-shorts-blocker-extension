@@ -1,8 +1,13 @@
 {
   "name": "Youtube shorts remover",
   "description": "Removes youtube shorts ",
-  "version": "1.0",
+  "version": "18.0",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dxudevacc@gmail.com"
+    }
+  },
   "action": {
     "default_popup": "disable.html",
     "default_icon": "images/favicon.png"
@@ -24,19 +29,23 @@
     "tabCapture",
     "storage"
   ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "content_scripts": [
     {
       "js": [
         "scripts/content.js"
       ],
       "matches": [
-        "https://youtube.com/",
-        "https://www.youtube.com/*",
-        "http://youtube.com/*"
+        "<all_urls>"
       ]
     }
   ],
+  "incognito": "spanning",
   "background": {
-    "scripts": "scripts/background.js"
+    "scripts": [
+      "scripts/background.js"
+    ]
   }
 }
