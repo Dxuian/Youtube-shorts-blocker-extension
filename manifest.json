@@ -1,7 +1,7 @@
 {
   "name": "Youtube shorts remover",
   "description": "Removes youtube shorts ",
-  "version": "20.0",
+  "version": "21.0",
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {
