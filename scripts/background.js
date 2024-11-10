@@ -64,21 +64,24 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true; // This ensures the sendResponse can be called asynchronously
 });
 
+const blockedUrls = [
+  "https://www.youtube.com/watch?v=JHJfWdUNUQ8&ab_channel=AnimeSelect",
+  "https://www.iana.org/domains/example"
+];
+const redirectUrl = "https://www.wikipedia.org"; // URL to redirect to
 
-// const blockedUrls = "https://www.youtube.com/watch?v=JHJfWdUNUQ8"
-// const redirectUrl = "https://www.wikipedia.org"; // URL to redirect to
+// Define the function separately
+function blockRequest(details) {
+  console.log("Blocking: ", details.url);
+  return { redirectUrl: redirectUrl };
+}
 
-// // Define the function separately
-// function blockRequest(details) {
-//   return { redirectUrl: redirectUrl };
-// }
-
-// // Add the listener and pass the function
-// browser.webRequest.onBeforeRequest.addListener(
-//   blockRequest,
-//   { urls: blockedUrls },
-//   ["blocking"]
-// );
+// Add the listener and pass the function
+browser.webRequest.onBeforeRequest.addListener(
+  blockRequest,
+  { urls: blockedUrls },
+  ["blocking"]
+);
 
 
 
