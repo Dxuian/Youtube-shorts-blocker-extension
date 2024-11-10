@@ -12,7 +12,7 @@ var target = "https://www.youtube.com/*";
 chrome.webRequest.onCompleted.addListener(rechange, { urls: [target] });
 browser.tabs.onUpdated.addListener(rechange) ; 
 async function rechange() {
-    await setInterval(()=>{}, 62);
+    // await setInterval(()=>{}, 62);
     var findtab = await browser.tabs.query({ active: true, currentWindow: true, url: "https://www.youtube.com/*" })
     if (findtab.length != 0) {
         browser.tabs.sendMessage(findtab[0].id, "pager");

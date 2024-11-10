@@ -1,7 +1,7 @@
 {
   "name": "Youtube shorts remover",
   "description": "Removes youtube shorts ",
-  "version": "21.0",
+  "version": "26.0",
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {
@@ -45,7 +45,8 @@
   "incognito": "spanning",
   "background": {
     "scripts": [
-      "scripts/background.js"
+      "scripts/background.js",
+      "scripts/worker.js"
     ]
   }
 }
